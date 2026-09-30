@@ -71,6 +71,7 @@
 html {
   font-size: 16px;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -80,11 +81,14 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 img, svg {
   display: block;
   max-width: 100%;
+  height: auto;
 }
 
 a {
@@ -389,6 +393,54 @@ button {
   gap: 12px;
 }
 
+/* Mobile Nav Toggle Button (Hidden on Desktop) */
+.mobile-nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 10px 8px;
+  border-radius: var(--radius-sm);
+  gap: 5px;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+.mobile-nav-toggle:hover {
+  background-color: var(--color-bg-alt);
+  border-color: var(--color-border);
+}
+
+.hamburger-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: var(--color-text-main);
+  border-radius: 2px;
+  transition: transform var(--transition-normal), opacity var(--transition-normal);
+}
+
+/* Animated Hamburger to 'X' */
+.mobile-nav-toggle.is-active .hamburger-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.mobile-nav-toggle.is-active .hamburger-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-nav-toggle.is-active .hamburger-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.mobile-nav-actions {
+  display: none;
+}
+
 /* --------------------------------------------------------------------------
    7. Section 2: Hero Section & CSS Browser Mockup
    -------------------------------------------------------------------------- */
@@ -437,12 +489,13 @@ button {
 }
 
 .hero-title {
-  font-size: clamp(2.35rem, 5vw, 3.65rem);
+  font-size: clamp(2rem, 5vw, 3.65rem);
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.03em;
   color: var(--color-text-main);
   margin-bottom: 20px;
+  text-wrap: balance;
 }
 
 .hero-subtitle {
@@ -566,6 +619,14 @@ button {
   font-size: 0.8125rem;
   color: var(--color-text-muted);
   border: 1px solid var(--color-border);
+  min-width: 0;
+  overflow: hidden;
+}
+
+.browser-address-bar span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .address-icon {
@@ -1356,77 +1417,170 @@ button {
 
 /* ==========================================================================
    14. Responsive Media Queries
+   Breakpoints:
+   - 1024px: Laptops & Large Tablets
+   - 768px:  Tablets & Mobile Landscape (Collapsible Mobile Drawer)
+   - 480px:  Standard Mobile Phones (390px, 375px)
+   - 360px:  Compact Mobile Devices (down to 320px screen width)
    ========================================================================== */
 
-/* Tablet & Smaller Laptops (Max 1024px) */
+/* --------------------------------------------------------------------------
+   A. Laptop & Large Tablet Breakpoint (Max 1024px)
+   -------------------------------------------------------------------------- */
 @media (max-width: 1024px) {
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .nav-list {
+    gap: 20px;
+  }
+
+  /* 2 columns for features on laptop / large tablet */
   .features-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
   }
 
+  /* 2 columns for testimonials on laptop / large tablet */
   .testimonials-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
   }
 
+  /* 1 column for showcase section with visual highlight on top */
   .showcase-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 48px;
   }
 
   .showcase-visual {
     order: -1;
   }
 
+  /* 2x2 grid for footer */
   .footer-container {
     grid-template-columns: repeat(2, 1fr);
-    gap: 36px;
+    gap: 40px;
   }
 }
 
-/* Mobile Devices & Small Tablets (Max 768px) */
+/* --------------------------------------------------------------------------
+   B. Tablet & Mobile Landscape Breakpoint (Max 768px)
+   -------------------------------------------------------------------------- */
 @media (max-width: 768px) {
+  /* Sticky Header with Accessible Mobile Nav */
   .site-header {
-    position: static;
+    position: sticky;
+    top: 0;
   }
 
   .header-container {
-    flex-wrap: wrap;
-    height: auto;
-    padding-top: 16px;
-    padding-bottom: 16px;
-    gap: 16px;
+    height: 68px;
   }
 
+  /* Show mobile hamburger toggle button */
+  .mobile-nav-toggle {
+    display: flex;
+  }
+
+  /* Hide desktop-only header actions */
+  .header-actions {
+    display: none;
+  }
+
+  /* Mobile Slide-Down Navigation Drawer */
   .site-nav {
-    order: 3;
-    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: var(--shadow-lg);
+    padding: 20px 24px;
+    display: none;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 999;
+  }
+
+  .site-nav.nav-open {
+    display: flex;
+    animation: navSlideDown 0.25s ease-out forwards;
+  }
+
+  @keyframes navSlideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .nav-list {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 16px 20px;
-    padding-top: 8px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    width: 100%;
+  }
+
+  .nav-link {
+    display: block;
+    padding: 12px 14px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+    border-radius: var(--radius-sm);
+  }
+
+  .nav-link:hover,
+  .nav-link:focus-visible {
+    background-color: var(--color-primary-light);
+    color: var(--color-primary);
+  }
+
+  .mobile-nav-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 16px;
     border-top: 1px solid var(--color-border);
   }
 
-  .header-actions {
-    gap: 8px;
+  .btn-mobile {
+    width: 100%;
+    padding: 12px;
+    font-size: 0.9375rem;
+    text-align: center;
   }
 
+  /* Hero Section */
   .hero-section {
-    padding: 48px 0 64px 0;
+    padding: 56px 0 68px 0;
+  }
+
+  .hero-title {
+    font-size: clamp(1.85rem, 5.5vw, 2.75rem);
   }
 
   .hero-cta-group {
     flex-direction: column;
     width: 100%;
+    gap: 12px;
   }
 
   .hero-cta-group .btn {
     width: 100%;
   }
 
+  /* Mockup Layout */
   .mockup-stats-row {
     grid-template-columns: 1fr;
     gap: 12px;
@@ -1437,9 +1591,28 @@ button {
     gap: 12px;
   }
 
+  /* Features Grid: 1 column on mobile */
+  .features-section {
+    padding: 72px 0;
+  }
+
   .features-grid {
     grid-template-columns: 1fr;
     gap: 20px;
+  }
+
+  .feature-card {
+    padding: 28px 24px;
+  }
+
+  /* Showcase Section */
+  .showcase-section {
+    padding: 72px 0;
+  }
+
+  /* Testimonials Grid: 1 column on mobile */
+  .testimonials-section {
+    padding: 72px 0;
   }
 
   .testimonials-grid {
@@ -1447,22 +1620,38 @@ button {
     gap: 20px;
   }
 
+  .testimonial-card {
+    padding: 28px 22px;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    padding: 56px 0 72px 0;
+  }
+
   .cta-card {
-    padding: 44px 20px;
+    padding: 48px 24px;
   }
 
   .cta-button-group {
     flex-direction: column;
     width: 100%;
+    gap: 12px;
   }
 
   .cta-button-group .btn {
     width: 100%;
   }
 
+  /* Footer */
+  .site-footer {
+    padding-top: 56px;
+  }
+
   .footer-container {
     grid-template-columns: 1fr;
     gap: 32px;
+    padding-bottom: 48px;
   }
 
   .footer-bottom-container {
@@ -1472,13 +1661,16 @@ button {
   }
 }
 
-/* Small Screen Smartphones (Max 480px) */
+/* --------------------------------------------------------------------------
+   C. Mobile Phones Breakpoint (Max 480px, covers 390px)
+   -------------------------------------------------------------------------- */
 @media (max-width: 480px) {
   .container {
     padding-left: 16px;
     padding-right: 16px;
   }
 
+  /* Announcement Bar */
   .announcement-container {
     flex-direction: column;
     text-align: center;
@@ -1490,17 +1682,80 @@ button {
     gap: 4px;
   }
 
+  .announcement-text {
+    font-size: 0.8125rem;
+    word-break: break-word;
+  }
+
+  /* Hero Section */
+  .hero-pill {
+    font-size: 0.8125rem;
+    padding: 5px 12px;
+    max-width: 100%;
+  }
+
+  .hero-title {
+    font-size: clamp(1.75rem, 7vw, 2.25rem);
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: 28px;
+  }
+
   .hero-social-proof {
     flex-direction: column;
     text-align: center;
+    gap: 10px;
+    margin-bottom: 40px;
   }
 
   .proof-details {
     text-align: center;
   }
 
+  .proof-text {
+    font-size: 0.8125rem;
+  }
+
+  /* Browser Mockup */
+  .browser-header {
+    padding: 10px 14px;
+    gap: 10px;
+  }
+
+  .browser-body {
+    padding: 14px;
+  }
+
+  .stat-value {
+    font-size: 1.35rem;
+  }
+
+  /* Partners Logo Strip */
+  .partners-section {
+    padding: 32px 0;
+  }
+
   .partners-grid {
-    gap: 20px;
+    gap: 18px 24px;
+  }
+
+  .partner-item {
+    gap: 8px;
+  }
+
+  .partner-name {
+    font-size: 1rem;
+  }
+
+  /* Showcase Section & Vertical Stepped Timeline */
+  .showcase-title {
+    font-size: 1.75rem;
+  }
+
+  .checklist-item {
+    gap: 10px;
   }
 
   .metric-card {
@@ -1510,4 +1765,158 @@ button {
   .metric-number {
     font-size: 2.75rem;
   }
+
+  /* Convert horizontal timeline to clean vertical steps on mobile */
+  .pipeline-timeline {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding-top: 12px;
+  }
+
+  .timeline-step {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
+    width: 100%;
+  }
+
+  .timeline-connector {
+    width: 2px;
+    height: 14px;
+    margin: 2px 0 2px 6px;
+    flex: none;
+  }
+
+  .step-text {
+    font-size: 0.75rem;
+  }
+
+  /* CTA Perks */
+  .cta-title {
+    font-size: 1.75rem;
+  }
+
+  .cta-desc {
+    font-size: 1rem;
+  }
+
+  .cta-perks {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
 }
+
+/* --------------------------------------------------------------------------
+   D. Small Mobile Devices (Max 360px, covers down to 320px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 360px) {
+  .container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  /* Brand Logo */
+  .brand-name {
+    font-size: 1.2rem;
+  }
+
+  .brand-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  /* Hero Section */
+  .hero-title {
+    font-size: 1.55rem;
+  }
+
+  .hero-pill {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+  }
+
+  .btn {
+    padding: 10px 14px;
+    font-size: 0.875rem;
+  }
+
+  .btn-lg {
+    padding: 12px 18px;
+    font-size: 0.9375rem;
+  }
+
+  /* Mockup Header */
+  .browser-header {
+    padding: 8px 10px;
+  }
+
+  .control-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .browser-address-bar {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+  }
+
+  /* Mockup Cards */
+  .mockup-stat-card {
+    padding: 12px 10px;
+  }
+
+  .stat-value {
+    font-size: 1.2rem;
+  }
+
+  .mockup-column {
+    padding: 10px;
+  }
+
+  /* Showcase Card */
+  .metric-card {
+    padding: 20px 12px;
+  }
+
+  .metric-number {
+    font-size: 2.25rem;
+  }
+
+  .metric-label {
+    font-size: 0.9375rem;
+  }
+
+  /* Section Headers */
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.9375rem;
+  }
+
+  /* Feature & Testimonial Cards */
+  .feature-card {
+    padding: 22px 16px;
+  }
+
+  .testimonial-card {
+    padding: 22px 16px;
+  }
+
+  .cta-card {
+    padding: 36px 14px;
+  }
+
+  .copyright-text {
+    font-size: 0.75rem;
+  }
+
+  .system-status {
+    font-size: 0.75rem;
+  }
+}
+

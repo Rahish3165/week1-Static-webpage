@@ -46,17 +46,28 @@
         <span class="brand-name">Nexus<span class="brand-accent">Flow</span></span>
       </a>
 
+      <!-- Accessible Mobile Navigation Toggle Button -->
+      <button class="mobile-nav-toggle" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav">
+        <span class="hamburger-bar" aria-hidden="true"></span>
+        <span class="hamburger-bar" aria-hidden="true"></span>
+        <span class="hamburger-bar" aria-hidden="true"></span>
+      </button>
+
       <!-- Primary Navigation -->
-      <nav class="site-nav" aria-label="Primary Navigation">
+      <nav class="site-nav" id="primary-nav" aria-label="Primary Navigation">
         <ul class="nav-list">
           <li><a href="#features" class="nav-link">Features</a></li>
           <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
           <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
           <li><a href="#pricing" class="nav-link">Pricing</a></li>
         </ul>
+        <div class="mobile-nav-actions">
+          <a href="#login" class="btn btn-ghost btn-mobile">Sign In</a>
+          <a href="#cta" class="btn btn-primary btn-mobile">Get Started Free</a>
+        </div>
       </nav>
 
-      <!-- Header Action Buttons -->
+      <!-- Desktop Header Action Buttons -->
       <div class="header-actions">
         <a href="#login" class="btn btn-ghost">Sign In</a>
         <a href="#cta" class="btn btn-primary">Get Started Free</a>
@@ -666,5 +677,39 @@
     </div>
   </footer>
 
+  <!-- Minimal Vanilla JavaScript for Accessible Mobile Navigation (No external libraries) -->
+  <script>
+    (function () {
+      const menuBtn = document.getElementById('mobile-menu-btn');
+      const siteNav = document.getElementById('primary-nav');
+      if (!menuBtn || !siteNav) return;
+
+      menuBtn.addEventListener('click', function () {
+        const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+        menuBtn.setAttribute('aria-expanded', String(!isExpanded));
+        siteNav.classList.toggle('nav-open');
+        menuBtn.classList.toggle('is-active');
+      });
+
+      // Close mobile drawer when clicking any nav link
+      siteNav.querySelectorAll('.nav-link, .btn-mobile').forEach(function (link) {
+        link.addEventListener('click', function () {
+          menuBtn.setAttribute('aria-expanded', 'false');
+          siteNav.classList.remove('nav-open');
+          menuBtn.classList.remove('is-active');
+        });
+      });
+
+      // Close mobile drawer on ESC key
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && siteNav.classList.contains('nav-open')) {
+          menuBtn.setAttribute('aria-expanded', 'false');
+          siteNav.classList.remove('nav-open');
+          menuBtn.classList.remove('is-active');
+          menuBtn.focus();
+        }
+      });
+    })();
+  </script>
 </body>
 </html>

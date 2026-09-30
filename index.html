@@ -13,6 +13,9 @@
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- Interactive JavaScript (Deferred) -->
+  <script src="script.js" defer></script>
 </head>
 <body>
 
@@ -677,39 +680,28 @@
     </div>
   </footer>
 
-  <!-- Minimal Vanilla JavaScript for Accessible Mobile Navigation (No external libraries) -->
-  <script>
-    (function () {
-      const menuBtn = document.getElementById('mobile-menu-btn');
-      const siteNav = document.getElementById('primary-nav');
-      if (!menuBtn || !siteNav) return;
+  <!-- ========================================================
+       SECTION 9: INTERACTIVE CALL-TO-ACTION (CTA) MODAL DIALOG
+       ======================================================== -->
+  <div id="cta-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+    <div class="modal-dialog">
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="Close dialog">&times;</button>
+      <div class="modal-header">
+        <span class="modal-badge">14-Day Free Trial</span>
+        <h3 id="modal-title" class="modal-title">Get Instant Access to NexusFlow</h3>
+        <p class="modal-subtitle">Join over 25,000 teams delivering better software. No credit card required.</p>
+      </div>
+      <form class="modal-form" id="trial-form">
+        <div class="form-group">
+          <label for="work-email" class="form-label">Work Email Address</label>
+          <input type="email" id="work-email" class="form-input" placeholder="you@company.com" required autocomplete="email">
+        </div>
+        <button type="submit" class="btn btn-primary btn-modal">Launch My Workspace &rarr;</button>
+      </form>
+      <div id="modal-feedback" class="modal-feedback" role="status" aria-live="polite" hidden></div>
+      <p class="modal-footer-note">&#10003; 2-minute setup &bull; Cancel anytime &bull; Full SOC-2 compliance</p>
+    </div>
+  </div>
 
-      menuBtn.addEventListener('click', function () {
-        const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
-        menuBtn.setAttribute('aria-expanded', String(!isExpanded));
-        siteNav.classList.toggle('nav-open');
-        menuBtn.classList.toggle('is-active');
-      });
-
-      // Close mobile drawer when clicking any nav link
-      siteNav.querySelectorAll('.nav-link, .btn-mobile').forEach(function (link) {
-        link.addEventListener('click', function () {
-          menuBtn.setAttribute('aria-expanded', 'false');
-          siteNav.classList.remove('nav-open');
-          menuBtn.classList.remove('is-active');
-        });
-      });
-
-      // Close mobile drawer on ESC key
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && siteNav.classList.contains('nav-open')) {
-          menuBtn.setAttribute('aria-expanded', 'false');
-          siteNav.classList.remove('nav-open');
-          menuBtn.classList.remove('is-active');
-          menuBtn.focus();
-        }
-      });
-    })();
-  </script>
 </body>
 </html>

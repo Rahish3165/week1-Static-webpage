@@ -25,7 +25,7 @@
   /* Typography Colors */
   --color-text-main: #0f172a;
   --color-text-muted: #475569;
-  --color-text-light: #94a3b8;
+  --color-text-light: #64748b;
   --color-text-white: #ffffff;
 
   /* Status Colors */
@@ -108,11 +108,25 @@ button {
   background: transparent;
 }
 
+/* Native sticky header scroll offset */
+section[id],
+main[id] {
+  scroll-margin-top: calc(72px + 16px);
+}
+
 /* --------------------------------------------------------------------------
    3. Accessibility & Focus States
    -------------------------------------------------------------------------- */
 :focus-visible {
   outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* High-contrast focus indicators on dark surfaces (WCAG AA Compliance) */
+.announcement-bar :focus-visible,
+.cta-section :focus-visible,
+.site-footer :focus-visible {
+  outline: 2px solid #60a5fa;
   outline-offset: 3px;
 }
 
@@ -545,17 +559,17 @@ button {
   margin-left: 0;
 }
 
-.avatar-1 { background-color: #3b82f6; }
-.avatar-2 { background-color: #10b981; }
-.avatar-3 { background-color: #8b5cf6; }
-.avatar-4 { background-color: #f59e0b; }
+.avatar-1 { background-color: #2563eb; }
+.avatar-2 { background-color: #047857; }
+.avatar-3 { background-color: #7c3aed; }
+.avatar-4 { background-color: #b45309; }
 
 .proof-details {
   text-align: left;
 }
 
 .star-rating {
-  color: #f59e0b;
+  color: #b45309;
   font-size: 1rem;
   letter-spacing: 2px;
   line-height: 1;
@@ -678,7 +692,7 @@ button {
   margin-top: 4px;
 }
 
-.stat-sub.positive { color: var(--color-success); }
+.stat-sub.positive { color: #047857; }
 .stat-sub.neutral { color: var(--color-text-muted); }
 
 /* Mockup Columns */
@@ -750,8 +764,8 @@ button {
 
 .tag-blue { background-color: #eff6ff; color: #2563eb; }
 .tag-purple { background-color: #f5f3ff; color: #7c3aed; }
-.tag-teal { background-color: #f0fdfa; color: #0d9488; }
-.tag-amber { background-color: #fffbeb; color: #d97706; }
+.tag-teal { background-color: #f0fdfa; color: #0f766e; }
+.tag-amber { background-color: #fffbeb; color: #92400e; }
 .tag-gray { background-color: #f1f5f9; color: #475569; }
 
 .card-name {
@@ -1118,6 +1132,8 @@ button {
 .testimonials-section {
   padding: 96px 0;
   background-color: var(--color-bg-alt);
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
 }
 
 .testimonials-grid {
@@ -1142,7 +1158,7 @@ button {
 }
 
 .card-stars {
-  color: #f59e0b;
+  color: #b45309;
   font-size: 1.125rem;
   letter-spacing: 3px;
   margin-bottom: 18px;
@@ -1201,6 +1217,8 @@ button {
 .cta-section {
   padding: 72px 0 96px 0;
   background-color: var(--color-bg);
+  content-visibility: auto;
+  contain-intrinsic-size: auto 500px;
 }
 
 .cta-card {
@@ -1373,7 +1391,7 @@ button {
   font-size: 0.6875rem;
   font-weight: 700;
   text-transform: uppercase;
-  background-color: var(--color-accent);
+  background-color: #0f766e;
   color: #ffffff;
   padding: 2px 6px;
   border-radius: 4px;
@@ -1396,7 +1414,7 @@ button {
 
 .copyright-text {
   font-size: 0.875rem;
-  color: #64748b;
+  color: #94a3b8;
 }
 
 .system-status {
@@ -1470,12 +1488,6 @@ button {
    B. Tablet & Mobile Landscape Breakpoint (Max 768px)
    -------------------------------------------------------------------------- */
 @media (max-width: 768px) {
-  /* Sticky Header with Accessible Mobile Nav */
-  .site-header {
-    position: sticky;
-    top: 0;
-  }
-
   .header-container {
     height: 68px;
   }
@@ -1925,10 +1937,9 @@ button {
    ========================================================================== */
 .reveal-element {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
+  transform: translateY(16px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal-element.is-revealed {
@@ -1936,12 +1947,33 @@ button {
   transform: translateY(0);
 }
 
-/* Honor accessibility settings for reduced motion */
+/* Comprehensive accessibility settings for reduced motion */
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .pill-dot {
+    animation: none !important;
+  }
+
   .reveal-element {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
+  }
+
+  .modal-overlay,
+  .modal-dialog,
+  .site-nav.nav-open {
+    animation: none !important;
   }
 }
 
@@ -2099,10 +2131,12 @@ body.modal-open {
   transition: all var(--transition-fast);
 }
 
+.form-input:focus-visible,
 .form-input:focus {
-  outline: none;
+  outline: 2px solid var(--color-primary);
+  outline-offset: 1px;
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
 }
 
 .btn-modal {

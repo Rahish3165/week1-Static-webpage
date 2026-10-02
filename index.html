@@ -6,10 +6,10 @@
   <meta name="description" content="NexusFlow - Modern workflow and productivity platform for engineering and product teams. Orchestrate tasks, automate pipelines, and ship faster.">
   <title>NexusFlow — Orchestrate Workflows from Concept to Delivery</title>
 
-  <!-- Google Fonts: Inter -->
+  <!-- Google Fonts: Inter (Preconnected & Optimized) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="style.css">
@@ -41,7 +41,7 @@
     <div class="container header-container">
       <!-- Brand Logo -->
       <a href="#" class="brand-logo" aria-label="NexusFlow Homepage">
-        <svg class="brand-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <svg class="brand-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
           <rect width="32" height="32" rx="8" fill="#2563EB"/>
           <path d="M9 16L15 10L23 18L17 24L9 16Z" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
           <circle cx="16" cy="16" r="3" fill="#60A5FA"/>
@@ -65,15 +65,15 @@
           <li><a href="#pricing" class="nav-link">Pricing</a></li>
         </ul>
         <div class="mobile-nav-actions">
-          <a href="#login" class="btn btn-ghost btn-mobile">Sign In</a>
-          <a href="#cta" class="btn btn-primary btn-mobile">Get Started Free</a>
+          <a href="#login" class="btn btn-ghost btn-mobile" aria-haspopup="dialog">Sign In</a>
+          <a href="#cta" class="btn btn-primary btn-mobile" aria-haspopup="dialog">Get Started Free</a>
         </div>
       </nav>
 
       <!-- Desktop Header Action Buttons -->
       <div class="header-actions">
-        <a href="#login" class="btn btn-ghost">Sign In</a>
-        <a href="#cta" class="btn btn-primary">Get Started Free</a>
+        <a href="#login" class="btn btn-ghost" aria-haspopup="dialog">Sign In</a>
+        <a href="#cta" class="btn btn-primary" aria-haspopup="dialog">Get Started Free</a>
       </div>
     </div>
   </header>
@@ -105,14 +105,14 @@
           </p>
 
           <div class="hero-cta-group">
-            <a href="#cta" class="btn btn-primary btn-lg">
+            <a href="#cta" class="btn btn-primary btn-lg" aria-haspopup="dialog">
               Start 14-Day Free Trial
-              <svg class="btn-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <svg class="btn-icon" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false">
                 <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
               </svg>
             </a>
             <a href="#how-it-works" class="btn btn-secondary btn-lg">
-              <svg class="btn-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <svg class="btn-icon" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/>
               </svg>
               Explore Live Tour
@@ -128,7 +128,7 @@
               <span class="avatar avatar-4">MR</span>
             </div>
             <div class="proof-details">
-              <div class="star-rating" aria-label="5 out of 5 stars">
+              <div class="star-rating" role="img" aria-label="5 out of 5 stars">
                 <span class="star" aria-hidden="true">&#9733;</span>
                 <span class="star" aria-hidden="true">&#9733;</span>
                 <span class="star" aria-hidden="true">&#9733;</span>
@@ -150,7 +150,7 @@
                 <span class="control-dot expand"></span>
               </div>
               <div class="browser-address-bar" aria-hidden="true">
-                <svg class="address-icon" viewBox="0 0 16 16" fill="currentColor">
+                <svg class="address-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false">
                   <path fill-rule="evenodd" d="M4 4v2h-.5A1.5 1.5 0 002 7.5v6A1.5 1.5 0 003.5 15h9a1.5 1.5 0 001.5-1.5v-6A1.5 1.5 0 0012.5 6H12V4a4 4 0 00-8 0zm2 2V4a2 2 0 114 0v2H6z" clip-rule="evenodd"/>
                 </svg>
                 <span>nexusflow.app/workspace/sprint-34</span>
@@ -237,45 +237,45 @@
          ======================================================== -->
     <section class="partners-section" aria-labelledby="partners-heading">
       <div class="container">
-        <h2 id="partners-heading" class="partners-heading">TRUSTED BY FAST-PACED TEAMS AT INDUSTRY-LEADING COMPANIES</h2>
-        <div class="partners-grid" role="list">
+        <h2 id="partners-heading" class="partners-heading">Trusted by Fast-Paced Teams at Industry-Leading Companies</h2>
+        <ul class="partners-grid">
           
-          <div class="partner-item" role="listitem">
-            <svg class="partner-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <li class="partner-item">
+            <svg class="partner-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
               <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
             </svg>
             <span class="partner-name">TechCorp</span>
-          </div>
+          </li>
 
-          <div class="partner-item" role="listitem">
-            <svg class="partner-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <li class="partner-item">
+            <svg class="partner-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
               <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/>
             </svg>
             <span class="partner-name">CloudScale</span>
-          </div>
+          </li>
 
-          <div class="partner-item" role="listitem">
-            <svg class="partner-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <li class="partner-item">
+            <svg class="partner-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
               <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
             </svg>
             <span class="partner-name">DevSphere</span>
-          </div>
+          </li>
 
-          <div class="partner-item" role="listitem">
-            <svg class="partner-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <li class="partner-item">
+            <svg class="partner-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
               <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
             </svg>
             <span class="partner-name">DataPulse</span>
-          </div>
+          </li>
 
-          <div class="partner-item" role="listitem">
-            <svg class="partner-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <li class="partner-item">
+            <svg class="partner-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
               <path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.784 1.399 8.163-7.333-3.856-7.333 3.856 1.4-8.163-5.934-5.784 8.2-1.192zm0 5.701l-2.223 4.504-4.969.723 3.596 3.505-.848 4.947 4.444-2.337 4.444 2.337-.849-4.947 3.597-3.505-4.97-.723z"/>
             </svg>
             <span class="partner-name">NextGen Labs</span>
-          </div>
+          </li>
 
-        </div>
+        </ul>
       </div>
     </section>
 
@@ -298,7 +298,7 @@
           <!-- Feature Card 1 -->
           <article class="feature-card">
             <div class="card-icon-wrapper" aria-hidden="true">
-              <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                 <circle cx="9" cy="7" r="4"></circle>
                 <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
@@ -309,13 +309,13 @@
             <p class="feature-desc">
               Collaborate live with multi-user document editing, instant PR review updates, and inline technical comments.
             </p>
-            <a href="#how-it-works" class="feature-link">Learn more <span aria-hidden="true">&rarr;</span></a>
+            <a href="#how-it-works" class="feature-link" aria-label="Learn more about Real-Time Team Sync">Learn more <span aria-hidden="true">&rarr;</span></a>
           </article>
 
           <!-- Feature Card 2 -->
           <article class="feature-card">
             <div class="card-icon-wrapper" aria-hidden="true">
-              <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <polyline points="16 18 22 12 16 6"></polyline>
                 <polyline points="8 6 2 12 8 18"></polyline>
               </svg>
@@ -324,13 +324,13 @@
             <p class="feature-desc">
               Trigger staging builds and production deployments automatically upon task status transitions and merged pull requests.
             </p>
-            <a href="#how-it-works" class="feature-link">Learn more <span aria-hidden="true">&rarr;</span></a>
+            <a href="#how-it-works" class="feature-link" aria-label="Learn more about Automated CI/CD Triggers">Learn more <span aria-hidden="true">&rarr;</span></a>
           </article>
 
           <!-- Feature Card 3 -->
           <article class="feature-card">
             <div class="card-icon-wrapper" aria-hidden="true">
-              <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <line x1="18" y1="20" x2="18" y2="10"></line>
                 <line x1="12" y1="20" x2="12" y2="4"></line>
                 <line x1="6" y1="20" x2="6" y2="14"></line>
@@ -340,13 +340,13 @@
             <p class="feature-desc">
               Gain actionable insights with automated burndown charts, cycle time distributions, and blocker detection alerts.
             </p>
-            <a href="#how-it-works" class="feature-link">Learn more <span aria-hidden="true">&rarr;</span></a>
+            <a href="#how-it-works" class="feature-link" aria-label="Learn more about Velocity &amp; Cycle Analytics">Learn more <span aria-hidden="true">&rarr;</span></a>
           </article>
 
           <!-- Feature Card 4 -->
           <article class="feature-card">
             <div class="card-icon-wrapper" aria-hidden="true">
-              <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
                 <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
               </svg>
@@ -355,13 +355,13 @@
             <p class="feature-desc">
               Safeguard your codebase and internal roadmap with SOC-2 Type II certification, SAML 2.0 SSO, and role-based permissions.
             </p>
-            <a href="#how-it-works" class="feature-link">Learn more <span aria-hidden="true">&rarr;</span></a>
+            <a href="#how-it-works" class="feature-link" aria-label="Learn more about Enterprise-Grade Security">Learn more <span aria-hidden="true">&rarr;</span></a>
           </article>
 
           <!-- Feature Card 5 -->
           <article class="feature-card">
             <div class="card-icon-wrapper" aria-hidden="true">
-              <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
                 <polyline points="2 17 12 22 22 17"></polyline>
                 <polyline points="2 12 12 17 22 12"></polyline>
@@ -371,22 +371,22 @@
             <p class="feature-desc">
               Seamlessly link GitHub, GitLab, Slack, Jira, Figma, and AWS to maintain a single source of truth across all tools.
             </p>
-            <a href="#how-it-works" class="feature-link">Learn more <span aria-hidden="true">&rarr;</span></a>
+            <a href="#how-it-works" class="feature-link" aria-label="Learn more about 100+ Native Integrations">Learn more <span aria-hidden="true">&rarr;</span></a>
           </article>
 
           <!-- Feature Card 6 -->
           <article class="feature-card">
             <div class="card-icon-wrapper" aria-hidden="true">
-              <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <circle cx="12" cy="12" r="3"></circle>
-                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
               </svg>
             </div>
             <h3 class="feature-title">Customizable Workspaces</h3>
             <p class="feature-desc">
               Tailor custom issue fields, automated workflow states, and team permissions without writing complex configuration scripts.
             </p>
-            <a href="#how-it-works" class="feature-link">Learn more <span aria-hidden="true">&rarr;</span></a>
+            <a href="#how-it-works" class="feature-link" aria-label="Learn more about Customizable Workspaces">Learn more <span aria-hidden="true">&rarr;</span></a>
           </article>
 
         </div>
@@ -506,7 +506,7 @@
           
           <!-- Testimonial 1 -->
           <article class="testimonial-card">
-            <div class="card-stars" aria-label="5 out of 5 stars">
+            <div class="card-stars" role="img" aria-label="5 out of 5 stars">
               <span aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
             </div>
             <blockquote class="testimonial-quote">
@@ -523,7 +523,7 @@
 
           <!-- Testimonial 2 -->
           <article class="testimonial-card">
-            <div class="card-stars" aria-label="5 out of 5 stars">
+            <div class="card-stars" role="img" aria-label="5 out of 5 stars">
               <span aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
             </div>
             <blockquote class="testimonial-quote">
@@ -540,7 +540,7 @@
 
           <!-- Testimonial 3 -->
           <article class="testimonial-card">
-            <div class="card-stars" aria-label="5 out of 5 stars">
+            <div class="card-stars" role="img" aria-label="5 out of 5 stars">
               <span aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
             </div>
             <blockquote class="testimonial-quote">
@@ -577,15 +577,15 @@
             </p>
 
             <div class="cta-button-group">
-              <a href="#" class="btn btn-primary-contrast btn-lg">Start 14-Day Free Trial</a>
-              <a href="#how-it-works" class="btn btn-ghost-contrast btn-lg">Schedule a Demo</a>
+              <a href="#" class="btn btn-primary-contrast btn-lg" aria-haspopup="dialog">Start 14-Day Free Trial</a>
+              <a href="#how-it-works" class="btn btn-ghost-contrast btn-lg" aria-haspopup="dialog">Schedule a Demo</a>
             </div>
 
-            <div class="cta-perks" role="list">
-              <span class="perk-item" role="listitem">&#10003; No credit card required</span>
-              <span class="perk-item" role="listitem">&#10003; Full feature access</span>
-              <span class="perk-item" role="listitem">&#10003; Cancel anytime</span>
-            </div>
+            <ul class="cta-perks">
+              <li class="perk-item">&#10003; No credit card required</li>
+              <li class="perk-item">&#10003; Full feature access</li>
+              <li class="perk-item">&#10003; Cancel anytime</li>
+            </ul>
           </div>
         </div>
 
@@ -603,7 +603,7 @@
       <!-- Brand & Mission Column -->
       <div class="footer-brand-col">
         <a href="#" class="brand-logo footer-logo" aria-label="NexusFlow Home">
-          <svg class="brand-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <svg class="brand-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
             <rect width="32" height="32" rx="8" fill="#2563EB"/>
             <path d="M9 16L15 10L23 18L17 24L9 16Z" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
             <circle cx="16" cy="16" r="3" fill="#60A5FA"/>
@@ -615,15 +615,15 @@
         </p>
         
         <!-- Social Icons -->
-        <div class="social-links" aria-label="Social media links">
+        <div class="social-links">
           <a href="#" class="social-link" aria-label="NexusFlow on GitHub">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
           </a>
           <a href="#" class="social-link" aria-label="NexusFlow on Twitter / X">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
           </a>
           <a href="#" class="social-link" aria-label="NexusFlow on LinkedIn">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
           </a>
         </div>
       </div>
@@ -688,7 +688,7 @@
       <button class="modal-close-btn" id="modal-close-btn" aria-label="Close dialog">&times;</button>
       <div class="modal-header">
         <span class="modal-badge">14-Day Free Trial</span>
-        <h3 id="modal-title" class="modal-title">Get Instant Access to NexusFlow</h3>
+        <h2 id="modal-title" class="modal-title">Get Instant Access to NexusFlow</h2>
         <p class="modal-subtitle">Join over 25,000 teams delivering better software. No credit card required.</p>
       </div>
       <form class="modal-form" id="trial-form">
@@ -698,7 +698,7 @@
         </div>
         <button type="submit" class="btn btn-primary btn-modal">Launch My Workspace &rarr;</button>
       </form>
-      <div id="modal-feedback" class="modal-feedback" role="status" aria-live="polite" hidden></div>
+      <div id="modal-feedback" class="modal-feedback" role="status" aria-live="polite" tabindex="-1" hidden></div>
       <p class="modal-footer-note">&#10003; 2-minute setup &bull; Cancel anytime &bull; Full SOC-2 compliance</p>
     </div>
   </div>

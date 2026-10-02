@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --------------------------------------------------------------------------
-  // 2. Smooth Scrolling for Internal Navigation Links
+  // 2. Smooth Scrolling for Internal Navigation Links (Native & Motion-Aware)
   // --------------------------------------------------------------------------
   const anchorLinks = document.querySelectorAll('a[href^="#"]:not([href="#"])');
 
@@ -69,15 +69,12 @@ document.addEventListener('DOMContentLoaded', () => {
       if (targetElement) {
         event.preventDefault();
 
-        // Calculate sticky header offset dynamically
-        const header = document.querySelector('.site-header');
-        const headerHeight = header ? header.offsetHeight : 72;
-        const targetPosition =
-          targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 16;
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-        window.scrollTo({
-          top: targetPosition,
-          behavior: 'smooth',
+        // Uses native scroll-margin-top from CSS without forced layout reflows
+        targetElement.scrollIntoView({
+          behavior: prefersReducedMotion ? 'auto' : 'smooth',
+          block: 'start',
         });
 
         // Close mobile drawer if open
@@ -92,23 +89,29 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // --------------------------------------------------------------------------
-  // 3. Scroll-Reveal Animation for Sections and Cards
+  // 3. Scroll-Reveal Animation for Sections and Cards (Performance & A11y Optimized)
   // --------------------------------------------------------------------------
-  // Elements that will animate smoothly when scrolled into view
   const revealTargets = document.querySelectorAll(
     '.feature-card, .testimonial-card, .metric-card, .partner-item, .section-header'
   );
 
-  if ('IntersectionObserver' in window) {
-    // Add base reveal class via JS (ensures graceful degradation if JS is disabled)
-    revealTargets.forEach((el) => el.classList.add('reveal-element'));
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  if (!prefersReducedMotion && 'IntersectionObserver' in window) {
     const revealObserver = new IntersectionObserver(
       (entries, observer) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('is-revealed');
-            observer.unobserve(entry.target); // Reveal only once for performance
+            if (entry.target.classList.contains('reveal-element')) {
+              entry.target.classList.add('is-revealed');
+              observer.unobserve(entry.target); // Reveal only once for performance
+            } else {
+              // Element was already in initial viewport on load; leave visible without shift or FOUC
+              observer.unobserve(entry.target);
+            }
+          } else {
+            // Element is currently off-screen; arm it for smooth scroll-reveal animation
+            entry.target.classList.add('reveal-element');
           }
         });
       },
@@ -118,7 +121,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     );
 
-    revealTargets.forEach((target) => revealObserver.observe(target));
+    revealTargets.forEach((target) => {
+      revealObserver.observe(target);
+    });
   }
 
   // --------------------------------------------------------------------------
@@ -229,6 +234,10 @@ document.addEventListener('DOMContentLoaded', () => {
           <strong>&#10003; Workspace Initialized!</strong>
           <p>We've sent a 14-day setup link to <em>${escapeHtml(userEmail)}</em>. Check your inbox to begin!</p>
         `;
+        // Retain focus inside dialog to prevent dumping focus to body
+        modalFeedback.focus();
+      } else if (modalCloseBtn) {
+        modalCloseBtn.focus();
       }
 
       // Automatically close modal after 3.5 seconds
@@ -257,9 +266,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Modal Focus Trap
     if (ctaModal && !ctaModal.hidden && event.key === 'Tab') {
-      const focusableSelectors = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
-      const focusableElements = ctaModal.querySelectorAll(focusableSelectors);
-      if (focusableElements.length === 0) return;
+      const focusableSelectors = 'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+      const allFocusable = Array.from(ctaModal.querySelectorAll(focusableSelectors));
+      const focusableElements = allFocusable.filter(
+        (el) => !el.closest('[hidden]') && el.offsetParent !== null
+      );
+      if (focusableElements.length === 0) {
+        event.preventDefault();
+        return;
+      }
 
       const firstElement = focusableElements[0];
       const lastElement = focusableElements[focusableElements.length - 1];
